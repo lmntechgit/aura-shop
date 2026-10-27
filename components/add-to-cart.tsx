@@ -7,11 +7,11 @@ import type { Product } from '@/lib/products';
 
 export function AddToCart({ product }: { product: Product }) {
   const { add } = useCart();
-  const [size, setSize] = useState<number | null>(null);
+  const [size, setSize] = useState<string | null>(null);
   const [color, setColor] = useState(product.colors[0].name);
   const [qty, setQty] = useState(1);
   const [error, setError] = useState(false);
-  const [added, setAdded] = useState(false);
+  const [done, setDone] = useState(false);
 
   const onAdd = () => {
     if (!size) {
@@ -27,51 +27,42 @@ export function AddToCart({ product }: { product: Product }) {
         price: product.price,
         size,
         color,
-        gradient: product.gradient,
+        image: product.images[0].src,
       },
       qty
     );
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1800);
+    setDone(true);
+    window.setTimeout(() => setDone(false), 2000);
   };
 
   return (
-    <div className="mt-8">
-      {/* colour */}
-      <div>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-ink/45">
-          Colourway — <span className="text-ink/70">{color}</span>
-        </p>
-        <div className="mt-3 flex gap-2.5">
-          {product.colors.map((c) => (
-            <button
-              key={c.name}
-              onClick={() => setColor(c.name)}
-              aria-label={c.name}
-              aria-pressed={color === c.name}
-              className={
-                'h-9 w-9 rounded-full ring-1 ring-offset-2 ring-offset-bone transition ' +
-                (color === c.name
-                  ? 'ring-ink'
-                  : 'ring-ink/15 hover:ring-ink/40')
-              }
-              style={{ background: c.hex }}
-            />
-          ))}
-        </div>
-      </div>
+    <div className="mt-6">
+      {product.colors.length > 1 && (
+        <fieldset className="border-t-2 border-ink pt-3">
+          <legend className="label text-[#6b6b6b]">Colourway — {color}</legend>
+          <div className="mt-2 flex gap-2">
+            {product.colors.map((c) => (
+              <button
+                key={c.name}
+                onClick={() => setColor(c.name)}
+                aria-pressed={color === c.name}
+                className={
+                  'label border-2 px-2.5 py-1.5 ' +
+                  (color === c.name
+                    ? 'border-ink bg-ink text-ground'
+                    : 'border-ink/30 hover:border-ink')
+                }
+              >
+                {c.name}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      )}
 
-      {/* size */}
-      <div className="mt-7">
-        <div className="flex items-baseline justify-between">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-ink/45">
-            Size (US)
-          </p>
-          <button className="text-[11px] text-ink/40 underline decoration-ink/20 underline-offset-2 transition hover:text-ink">
-            Size guide
-          </button>
-        </div>
-        <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-7">
+      <fieldset className="mt-5 border-t-2 border-ink pt-3">
+        <legend className="label text-[#6b6b6b]">Size</legend>
+        <div className="mt-2 flex flex-wrap gap-2">
           {product.sizes.map((s) => (
             <button
               key={s}
@@ -81,10 +72,10 @@ export function AddToCart({ product }: { product: Product }) {
               }}
               aria-pressed={size === s}
               className={
-                'rounded-lg border py-2.5 text-sm tabular-nums transition ' +
+                'min-w-[3rem] border-2 py-2 text-meta tabular-nums ' +
                 (size === s
-                  ? 'border-ink bg-ink text-bone'
-                  : 'border-ink/15 text-ink/70 hover:border-ink/45')
+                  ? 'border-ink bg-ink text-ground'
+                  : 'border-ink/30 hover:border-ink')
               }
             >
               {s}
@@ -92,47 +83,40 @@ export function AddToCart({ product }: { product: Product }) {
           ))}
         </div>
         {error && (
-          <p className="mt-2.5 text-[12px] text-red-600">
-            Please choose a size first.
+          <p role="alert" className="mt-2 text-meta font-strong text-accent">
+            Please choose a size.
           </p>
         )}
-      </div>
+      </fieldset>
 
-      {/* qty + cta */}
-      <div className="mt-8 flex gap-3">
-        <div className="flex items-center rounded-full border border-ink/15">
+      <div className="mt-6 flex items-stretch gap-3 border-t-2 border-ink pt-4">
+        <div className="flex items-center border-2 border-ink">
           <button
             onClick={() => setQty((q) => Math.max(1, q - 1))}
-            className="flex h-12 w-11 items-center justify-center text-ink/60 transition hover:text-ink"
+            className="h-11 w-10 hover:bg-ink hover:text-ground"
             aria-label="Decrease quantity"
           >
             −
           </button>
-          <span className="w-7 text-center text-sm tabular-nums">{qty}</span>
+          <span className="w-8 text-center text-meta tabular-nums" aria-live="polite">
+            {qty}
+          </span>
           <button
             onClick={() => setQty((q) => Math.min(9, q + 1))}
-            className="flex h-12 w-11 items-center justify-center text-ink/60 transition hover:text-ink"
+            className="h-11 w-10 hover:bg-ink hover:text-ground"
             aria-label="Increase quantity"
           >
             +
           </button>
         </div>
 
-        <button
-          onClick={onAdd}
-          className={
-            'flex-1 rounded-full py-4 text-[12px] uppercase tracking-[0.2em] transition ' +
-            (added
-              ? 'bg-emerald-700 text-white'
-              : 'bg-ink text-bone hover:bg-ink/85')
-          }
-        >
-          {added ? 'Added to bag ✓' : 'Add to bag — ' + formatPrice(product.price * qty)}
+        <button onClick={onAdd} className="btn flex-1">
+          {done ? 'Added to bag' : 'Add to bag — ' + formatPrice(product.price * qty)}
         </button>
       </div>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.14em] text-ink/35">
-        Free shipping over $150 · 30-day wear test · Demo store
+      <p aria-live="polite" className="mt-3 label text-[#6b6b6b]">
+        Free shipping over R800 · 30-day returns · Demo store
       </p>
     </div>
   );

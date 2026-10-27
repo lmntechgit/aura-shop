@@ -8,24 +8,24 @@ export type CartItem = {
   slug: string;
   name: string;
   price: number;
-  size: number;
+  size: string;
   color: string;
   qty: number;
-  gradient: string;
+  image: string;
 };
 
 type State = { items: CartItem[]; open: boolean };
 
 type Action =
   | { type: 'ADD'; item: Omit<CartItem, 'qty'>; qty?: number }
-  | { type: 'REMOVE'; id: string; size: number; color: string }
-  | { type: 'SET_QTY'; id: string; size: number; color: string; qty: number }
+  | { type: 'REMOVE'; id: string; size: string; color: string }
+  | { type: 'SET_QTY'; id: string; size: string; color: string; qty: number }
   | { type: 'CLEAR' }
   | { type: 'OPEN' }
   | { type: 'CLOSE' }
   | { type: 'HYDRATE'; items: CartItem[] };
 
-const key = (i: { id: string; size: number; color: string }) =>
+const key = (i: { id: string; size: string; color: string }) =>
   i.id + '|' + i.size + '|' + i.color;
 
 function reducer(state: State, action: Action): State {
@@ -73,8 +73,8 @@ const CartContext = createContext<{
   items: CartItem[];
   open: boolean;
   add: (item: Omit<CartItem, 'qty'>, qty?: number) => void;
-  remove: (id: string, size: number, color: string) => void;
-  setQty: (id: string, size: number, color: string, qty: number) => void;
+  remove: (id: string, size: string, color: string) => void;
+  setQty: (id: string, size: string, color: string, qty: number) => void;
   clear: () => void;
   openCart: () => void;
   closeCart: () => void;
@@ -119,9 +119,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       subtotal,
       add: (item: Omit<CartItem, 'qty'>, qty?: number) =>
         dispatch({ type: 'ADD', item, qty }),
-      remove: (id: string, size: number, color: string) =>
+      remove: (id: string, size: string, color: string) =>
         dispatch({ type: 'REMOVE', id, size, color }),
-      setQty: (id: string, size: number, color: string, qty: number) =>
+      setQty: (id: string, size: string, color: string, qty: number) =>
         dispatch({ type: 'SET_QTY', id, size, color, qty }),
       clear: () => dispatch({ type: 'CLEAR' }),
       openCart: () => dispatch({ type: 'OPEN' }),

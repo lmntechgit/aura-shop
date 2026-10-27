@@ -7,20 +7,34 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: '#0B0B0F',
-        bone: '#F7F5F2',
-        aura: {
-          DEFAULT: '#C6A664',
-          light: '#E2CFA4',
-          dark: '#9C7F42',
-        },
+        ground: '#ffffff',
+        ink: '#000000',
+        surface: '#f0f0f0',
+        accent: '#c90000',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--dp-typography-face)'],
       },
-      letterSpacing: {
-        widest: '0.25em',
+      fontSize: {
+        label: ['12px', { lineHeight: '1.5', letterSpacing: '0.12em' }],
+        meta: ['14px', { lineHeight: '1.5' }],
+        body: ['16px', { lineHeight: '1.5' }],
+        lead: ['17px', { lineHeight: '1.5' }],
+        item: ['24px', { lineHeight: '1.2' }],
+      },
+      fontWeight: {
+        regular: '400',
+        strong: '700',
+        display: '750',
+      },
+      spacing: {
+        gutter: 'var(--dp-spacing-gutter)',
+      },
+      borderWidth: {
+        rule: '2px',
+      },
+      borderRadius: {
+        control: '0',
       },
     },
   },

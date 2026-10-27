@@ -6,27 +6,31 @@ import { CartDrawer } from '@/components/cart-drawer';
 import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: 'Aura — Footwear engineered for lightness',
+  title: 'Blaze — The style you love',
   description:
-    'Aura builds performance footwear with a single obsession: making the shoe disappear. Shop the Glide, Eclipse, Terra and Halo.',
+    'Streetwear printed in small batches in Johannesburg. Heavyweight cotton, boxed marks, and a red tag that does not need to shout.',
   openGraph: {
-    title: 'Aura — Footwear engineered for lightness',
-    description: 'Performance footwear engineered to disappear on foot.',
+    title: 'Blaze — The style you love',
+    description: 'Streetwear printed in small batches.',
     type: 'website',
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body>
+        <a
+          href="#main"
+          className="label absolute left-2 top-2 z-50 -translate-y-24 border-2 border-ink bg-ground px-3 py-2 focus:translate-y-0"
+        >
+          Skip to content
+        </a>
         <CartProvider>
           <Nav />
-          <main className="min-h-screen">{children}</main>
+          <main id="main" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
           <CartDrawer />
         </CartProvider>

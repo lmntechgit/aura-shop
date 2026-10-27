@@ -1,98 +1,48 @@
-'use client';
-
 import Link from 'next/link';
+import Image from 'next/image';
 import { formatPrice } from '@/lib/products';
 import type { Product } from '@/lib/products';
-import { ShoeArt } from '@/components/shoe-art';
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
-    <Link
-      href={'/product/' + product.slug}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-ink/8 bg-white/60 transition-all duration-500 hover:-translate-y-1 hover:border-ink/15 hover:shadow-[0_24px_60px_-24px_rgba(11,11,15,0.35)]"
-    >
-      <div className="relative aspect-[4/3] overflow-hidden bg-bone">
-        <div
-          className="absolute inset-0 opacity-70 transition-transform duration-700 group-hover:scale-105"
-          style={{ background: product.gradient }}
-        />
-        <div className="absolute inset-0 flex items-center justify-center p-6">
-          <ShoeArt
-            gradient={product.gradient}
-            accent={product.accent}
-            className="w-full max-w-[280px] drop-shadow-xl transition-transform duration-700 group-hover:-translate-y-1 group-hover:rotate-[-3deg] group-hover:scale-105"
+    <article className="border-t-2 border-ink pt-3">
+      <Link href={'/product/' + product.slug} className="group block">
+        <div className="flex items-baseline justify-between">
+          <span className="label text-[#6b6b6b]">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          {product.badge && (
+            <span className="label bg-accent px-1.5 py-0.5 text-ground">
+              {product.badge}
+            </span>
+          )}
+        </div>
+
+        <figure className="mt-3 aspect-[3/4] overflow-hidden bg-surface">
+          <Image
+            src={product.images[0].src}
+            alt={product.images[0].alt}
+            width={900}
+            height={1200}
+            sizes="(max-width: 700px) 50vw, (max-width: 1050px) 33vw, 25vw"
+            className="h-full w-full object-cover grayscale"
           />
-        </div>
+        </figure>
 
-        {product.badge && (
-          <span className="absolute left-4 top-4 rounded-full bg-ink px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-bone">
-            {product.badge}
-          </span>
-        )}
-        {product.compareAt && product.compareAt > product.price && (
-          <span className="absolute right-4 top-4 rounded-full bg-red-600 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-white">
-            Save {formatPrice(product.compareAt - product.price)}
-          </span>
-        )}
-      </div>
+        <h3 className="mt-3 text-[18px] font-strong leading-tight group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">
+          {product.name}
+        </h3>
+        <p className="mt-1 text-meta text-[#555]">{product.tagline}</p>
 
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="font-display text-lg leading-tight">{product.name}</h3>
-            <p className="mt-0.5 text-[12px] text-ink/45">{product.tagline}</p>
-          </div>
-          <div className="text-right">
-            <p className="text-sm font-medium tabular-nums">
-              {formatPrice(product.price)}
-            </p>
-            {product.compareAt && (
-              <p className="text-[11px] text-ink/35 line-through tabular-nums">
-                {formatPrice(product.compareAt)}
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-4 flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
-            {product.colors.map((c) => (
-              <span
-                key={c.name}
-                title={c.name}
-                className="h-3.5 w-3.5 rounded-full ring-1 ring-ink/15"
-                style={{ background: c.hex }}
-              />
-            ))}
-          </div>
-          <div className="flex items-center gap-1 text-[11px] text-ink/45">
-            <StarIcon />
-            <span className="tabular-nums">{product.rating}</span>
-            <span className="text-ink/25">({product.reviews})</span>
-          </div>
-        </div>
-
-        <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.16em] text-ink/60 transition group-hover:text-ink">
-          View shoe
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path
-              d="M1 6h9M6.5 2.5L10 6l-3.5 3.5"
-              stroke="currentColor"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      </div>
-    </Link>
-  );
-}
-
-function StarIcon() {
-  return (
-    <svg width="11" height="11" viewBox="0 0 12 12" fill="#C6A664">
-      <path d="M6 0l1.6 3.7 4 .4-3 2.7.9 3.9L6 8.7 2.5 10.7l.9-3.9-3-2.7 4-.4z" />
-    </svg>
+        <p className="mt-2 flex items-baseline gap-2 text-meta">
+          <span className="tabular-nums font-strong">{formatPrice(product.price)}</span>
+          {product.compareAt && (
+            <span className="tabular-nums text-[#767676] line-through">
+              {formatPrice(product.compareAt)}
+            </span>
+          )}
+        </p>
+      </Link>
+    </article>
   );
 }

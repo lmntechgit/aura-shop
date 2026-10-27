@@ -7,119 +7,124 @@ export type Product = {
   compareAt?: number;
   colorway: string;
   colors: { name: string; hex: string }[];
-  sizes: number[];
+  sizes: string[];
   badge?: string;
+  featured?: boolean;
   description: string;
   features: string[];
-  /** CSS gradient used as the product visual */
-  gradient: string;
-  accent: string;
+  images: { src: string; alt: string }[];
   rating: number;
   reviews: number;
 };
 
+const img = (file: string) => '/images/' + file;
+
 export const products: Product[] = [
   {
-    id: 'aura-01',
-    slug: 'aura-glide',
-    name: 'Aura Glide',
-    tagline: 'Weightless daily trainer',
-    price: 180,
-    compareAt: 220,
-    colorway: 'Bone / Gold',
-    colors: [
-      { name: 'Bone', hex: '#F7F5F2' },
-      { name: 'Onyx', hex: '#0B0B0F' },
-      { name: 'Sand', hex: '#C6A664' },
-    ],
-    sizes: [7, 8, 9, 10, 11, 12],
+    id: 'blz-01',
+    slug: 'blaze-core-tee-black',
+    name: 'Blaze Core Tee',
+    tagline: 'Heavyweight cotton, red mark',
+    price: 420,
+    compareAt: 520,
+    colorway: 'Black',
+    colors: [{ name: 'Black', hex: '#111111' }],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     badge: 'Best Seller',
+    featured: true,
     description:
-      'The Glide is engineered for the miles you forget you ran. A single-piece knit upper wraps the foot without pressure, while the AuraFoam midsole returns energy with every stride.',
+      'The Core Tee is the piece the rest of the range is built around. Heavyweight cotton, a boxed chest mark and the South Africa tag cut in red — nothing printed that does not need to be there.',
     features: [
-      'AuraFoam™ nitrogen-infused midsole',
-      'Seamless single-knit upper',
-      'Recycled ocean-bound yarn',
-      '236g (size 9)',
+      '100% heavyweight combed cotton',
+      'Boxed Blaze chest mark',
+      'Ribbed crew neck, taped seams',
+      'Cold wash, inside out',
     ],
-    gradient: 'linear-gradient(145deg, #F7F5F2 0%, #E8E2D8 45%, #C6A664 100%)',
-    accent: '#C6A664',
+    images: [
+      { src: img('IMG-20261027-WA0051.jpg'), alt: 'Blaze Core Tee in black, flat product shot showing the red boxed chest mark' },
+      { src: img('IMG-20261027-WA0046.jpg'), alt: 'Model wearing a black oversized Blaze tee on an outdoor court' },
+      { src: img('IMG-20261027-WA0052.jpg'), alt: 'Two tees on a print-shop workbench during heat transfer' },
+    ],
     rating: 4.8,
     reviews: 412,
   },
   {
-    id: 'aura-02',
-    slug: 'aura-eclipse',
-    name: 'Aura Eclipse',
-    tagline: 'Night-run silhouette',
-    price: 210,
-    colorway: 'Onyx / Graphite',
-    colors: [
-      { name: 'Onyx', hex: '#0B0B0F' },
-      { name: 'Graphite', hex: '#3A3A42' },
-    ],
-    sizes: [7, 8, 9, 10, 11, 12, 13],
+    id: 'blz-02',
+    slug: 'blaze-script-tee-brown',
+    name: 'Blaze Script Tee',
+    tagline: 'Chocolate brown, script wordmark',
+    price: 460,
+    colorway: 'Chocolate',
+    colors: [{ name: 'Chocolate', hex: '#4A342A' }],
+    sizes: ['S', 'M', 'L', 'XL'],
     badge: 'New',
     description:
-      'Built for the hours after dark. Reflective filament is woven directly into the upper, so the Eclipse catches light from every angle without a single glued-on strip.',
+      'A softer counterpart to the Core Tee. Garment-dyed chocolate cotton with the wordmark stacked over the script line — the one we wear when we are not working.',
     features: [
-      'Woven reflective filament upper',
-      'Carbon-plate propulsion layer',
-      'Glow-line outsole detailing',
-      '228g (size 9)',
+      'Garment-dyed cotton jersey',
+      'Script wordmark print',
+      'Relaxed shoulder',
+      'Colour softens with each wash',
     ],
-    gradient: 'linear-gradient(145deg, #2A2A32 0%, #0B0B0F 55%, #43434D 100%)',
-    accent: '#8B8B99',
-    rating: 4.9,
+    images: [
+      { src: img('IMG-20261027-WA0048.jpg'), alt: 'Blaze Script Tee in chocolate brown, flat product shot with white script wordmark' },
+      { src: img('IMG-20261027-WA0043.jpg'), alt: 'Model in a black Blaze tee photographed inside a glass-fronted building' },
+      { src: img('IMG-20261027-WA0055.jpg'), alt: 'Model in a white Blaze tee seated outdoors by a waterfall cliff' },
+    ],
+    rating: 4.7,
     reviews: 189,
   },
   {
-    id: 'aura-03',
-    slug: 'aura-terra',
-    name: 'Aura Terra',
-    tagline: 'Trail-ready grip',
-    price: 195,
-    colorway: 'Clay / Moss',
-    colors: [
-      { name: 'Clay', hex: '#A9714B' },
-      { name: 'Moss', hex: '#5A6B4F' },
-    ],
-    sizes: [8, 9, 10, 11, 12],
+    id: 'blz-03',
+    slug: 'blaze-mosque-back-tee',
+    name: 'Blaze Back-Print Tee',
+    tagline: 'Full-back illustration',
+    price: 520,
+    colorway: 'White',
+    colors: [{ name: 'White', hex: '#F5F5F5' }],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     description:
-      'Four-millimeter lugs, a rock plate that shrugs off scree, and a water-shedding upper. The Terra is the shoe you reach for when the trail turns hostile.',
+      'The full back carries everything: the mosque illustration framed in leaves and flowers, the pixel glyphs beneath it. The front stays plain, which is the whole point.',
     features: [
-      '4mm multi-directional lugs',
-      'Forefoot rock plate',
-      'DWR-treated ripstop upper',
-      '284g (size 9)',
+      'Oversized fit, dropped shoulder',
+      'Full-back screen print, six colours',
+      'Plain front panel',
+      'Printed in small batches',
     ],
-    gradient: 'linear-gradient(145deg, #6B7A5A 0%, #A9714B 55%, #4A3B2E 100%)',
-    accent: '#7D8C63',
-    rating: 4.7,
+    images: [
+      { src: img('IMG-20261027-WA0056.jpg'), alt: 'Model shot from behind wearing the white Blaze back-print tee with mosque illustration' },
+      { src: img('IMG-20261027-WA0049.jpg'), alt: 'Two models in Blaze tees on a trampoline, one black and one graphic white' },
+      { src: img('IMG-20261027-WA0047.jpg'), alt: 'Model in a white oversized Blaze tee holding a football in front of a goal net' },
+    ],
+    rating: 4.9,
     reviews: 264,
   },
   {
-    id: 'aura-04',
-    slug: 'aura-halo',
-    name: 'Aura Halo',
-    tagline: 'Recovery slide',
-    price: 95,
-    colorway: 'Cloud / Cream',
+    id: 'blz-04',
+    slug: 'blaze-bucket-hat',
+    name: 'Blaze Bucket Hat',
+    tagline: 'Repeating B-mark, three colourways',
+    price: 260,
+    colorway: 'Black / White / Green',
     colors: [
-      { name: 'Cloud', hex: '#EDEAE4' },
-      { name: 'Cream', hex: '#D9CFBC' },
+      { name: 'Black', hex: '#111111' },
+      { name: 'White', hex: '#F5F5F5' },
+      { name: 'Green', hex: '#2F5D3A' },
     ],
-    sizes: [6, 7, 8, 9, 10, 11, 12],
+    sizes: ['S/M', 'L/XL'],
     description:
-      'A post-run slide with the same foam that made the Glide famous. Molded arch support, a soft heel cradle, and nothing else you do not need.',
+      'All-over B-mark print with the wordmark and strap. Packable, unlined, and the closest thing in the range to a uniform.',
     features: [
-      'AuraFoam™ footbed',
-      'Molded arch support',
-      'Machine washable',
-      '148g (size 9)',
+      'All-over printed cotton twill',
+      'Wordmark chin strap',
+      'Unlined, packable',
+      'Three colourways',
     ],
-    gradient: 'linear-gradient(145deg, #FFFFFF 0%, #EDEAE4 45%, #CFC4B0 100%)',
-    accent: '#B8AC95',
+    images: [
+      { src: img('IMG-20261027-WA0053.jpg'), alt: 'Three Blaze bucket hats in black, white and green arranged on a white background' },
+      { src: img('IMG-20261027-WA0045.jpg'), alt: 'Two models in Blaze apparel, one wearing the black bucket hat' },
+      { src: img('IMG-20261027-WA0052.jpg'), alt: 'Print-shop workbench with Blaze t-shirt transfer sheets' },
+    ],
     rating: 4.6,
     reviews: 331,
   },
@@ -129,6 +134,25 @@ export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
 
-export function formatPrice(cents: number): string {
-  return '$' + cents.toFixed(0);
+export function formatPrice(amount: number): string {
+  return 'R' + amount.toFixed(0);
 }
+
+/** Editorial imagery used on the home page, mapped to real photographs. */
+export const editorial = [
+  {
+    src: img('IMG-20261027-WA0045.jpg'),
+    alt: 'Two models wearing Blaze apparel in a modern kitchen, one in a black bucket hat',
+    caption: 'Studio visit — kitchen set',
+  },
+  {
+    src: img('IMG-20261027-WA0046.jpg'),
+    alt: 'Two models in oversized Blaze tees on an outdoor sports court',
+    caption: 'Court, midday',
+  },
+  {
+    src: img('IMG-20261027-WA0052.jpg'),
+    alt: 'Hands positioning a Blaze tee on a wooden workbench beside transfer sheets',
+    caption: 'Heat press, unit 4',
+  },
+];

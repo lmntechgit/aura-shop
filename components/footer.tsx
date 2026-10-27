@@ -2,95 +2,71 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-ink text-bone">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        <div className="grid gap-12 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <p className="font-display text-3xl tracking-[0.3em]">AURA</p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-bone/50">
-              Footwear engineered to disappear. Made in small runs, built to
-              last more than a season.
-            </p>
-            <form className="mt-8 flex max-w-sm gap-2">
-              <input
-                type="email"
-                placeholder="Email address"
-                aria-label="Email address"
-                className="min-w-0 flex-1 rounded-full border border-bone/20 bg-transparent px-4 py-3 text-sm text-bone placeholder:text-bone/35 focus:border-aura focus:outline-none"
-              />
-              <button
-                type="button"
-                className="rounded-full bg-aura px-5 py-3 text-[11px] uppercase tracking-[0.16em] text-ink transition hover:bg-aura-light"
-              >
-                Join
-              </button>
-            </form>
-          </div>
+    <footer className="bg-ink text-ground">
+      <div className="grid-page py-14">
+        <div className="col-span-6 md:col-span-3">
+          <p className="text-[15px] font-display uppercase tracking-[-0.02em]">
+            BLAZE
+          </p>
+          <p className="mt-3 max-w-[26ch] text-meta text-ground/60">
+            The style you love. Printed in small batches.
+          </p>
+        </div>
 
+        <div className="footer-groups col-span-6 mt-10 grid grid-cols-2 gap-6 md:col-span-6 md:mt-0 md:grid-cols-3">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-bone/40">
-              Shop
-            </p>
-            <ul className="mt-4 space-y-2.5 text-sm text-bone/60">
+            <p className="label text-ground/50">Shop</p>
+            <ul className="mt-3 space-y-2 text-meta text-ground/75">
               <li>
-                <Link href="/#shop" className="transition hover:text-aura">
-                  All shoes
+                <Link href="/#shop" className="hover:text-accent">
+                  All pieces
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/product/aura-glide"
-                  className="transition hover:text-aura"
-                >
-                  Aura Glide
+                <Link href="/product/blaze-core-tee-black" className="hover:text-accent">
+                  Core Tee
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/product/aura-eclipse"
-                  className="transition hover:text-aura"
-                >
-                  Aura Eclipse
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/product/aura-terra"
-                  className="transition hover:text-aura"
-                >
-                  Aura Terra
+                <Link href="/product/blaze-bucket-hat" className="hover:text-accent">
+                  Bucket Hat
                 </Link>
               </li>
             </ul>
           </div>
-
           <div>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-bone/40">
-              Company
-            </p>
-            <ul className="mt-4 space-y-2.5 text-sm text-bone/60">
+            <p className="label text-ground/50">Company</p>
+            <ul className="mt-3 space-y-2 text-meta text-ground/75">
               <li>
-                <Link href="/#story" className="transition hover:text-aura">
-                  Our story
+                <Link href="/#story" className="hover:text-accent">
+                  Story
                 </Link>
               </li>
               <li>
-                <Link href="/#technology" className="transition hover:text-aura">
-                  Technology
+                <Link href="/#range" className="hover:text-accent">
+                  Range
                 </Link>
               </li>
               <li>
-                <Link href="/checkout" className="transition hover:text-aura">
+                <Link href="/checkout" className="hover:text-accent">
                   Checkout
                 </Link>
               </li>
             </ul>
           </div>
+          <div>
+            <p className="label text-ground/50">Notice</p>
+            <p className="mt-3 text-meta text-ground/60">
+              Demonstration store. No payments are taken.
+            </p>
+          </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-bone/10 pt-6 text-[11px] uppercase tracking-[0.14em] text-bone/30 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} Aura Athletics</p>
-          <p>Demo store · Deployed on Dokploy</p>
+        <div className="col-span-6 mt-12 border-t-2 border-ground/30 pt-5 md:col-span-12">
+          <div className="flex flex-col justify-between gap-2 text-meta text-ground/45 sm:flex-row">
+            <p>© {new Date().getFullYear()} Blaze</p>
+            <p>Deployed on Dokploy</p>
+          </div>
         </div>
       </div>
     </footer>
