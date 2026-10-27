@@ -54,7 +54,7 @@ export default function Home() {
         </div>
         <div className="col-span-6 md:col-span-9">
           {[
-            ['Pieces in range', '04'],
+            ['Pieces in range', String(products.length).padStart(2, '0')],
             ['Printed', 'Unit 4, by hand'],
             ['Batches', 'Small runs only'],
             ['Returns', '30 days, worn'],
@@ -75,7 +75,7 @@ export default function Home() {
         <div className="rail">
           <p className="label text-[#6b6b6b]">01 — Collection</p>
           <h2 className="display mt-3 text-[clamp(28px,3.4vw,44px)]">
-            Four pieces.
+            {products.length} pieces.
           </h2>
           <p className="mt-4 max-w-[30ch] text-meta text-[#555]">
             Each one printed in a small run. No restocks promised.

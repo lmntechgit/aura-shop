@@ -28,7 +28,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/product/blaze-bucket-hat" className="hover:text-accent">
+                <Link href="/product/blaze-bucket-hat-black" className="hover:text-accent">
                   Bucket Hat
                 </Link>
               </li>
