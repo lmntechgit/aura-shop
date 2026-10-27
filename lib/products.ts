@@ -126,30 +126,6 @@ export const products: Product[] = [
     reviews: 187,
   },
   {
-    id: 'blz-05',
-    slug: 'blaze-bucket-hat-white',
-    name: 'Blaze Bucket Hat — White',
-    tagline: 'All-over B-mark, inverted',
-    price: 260,
-    colorway: 'White',
-    colors: [{ name: 'White', hex: '#F5F5F5' }],
-    sizes: ['S/M', 'L/XL'],
-    description:
-      'The same all-over B-mark print reversed onto white twill with a black mark. Reads lighter than the black for summer, wears the same.',
-    features: [
-      'All-over printed cotton twill',
-      'Black mark on white twill',
-      'Unlined, packable',
-      'Inverted colourway',
-    ],
-    images: [
-      { src: img('IMG-20261027-WA0053.jpg'), alt: 'Three Blaze bucket hats in black, white and green on a white background' },
-      { src: img('IMG-20261027-WA0045.jpg'), alt: 'Two models in Blaze apparel in a modern kitchen' },
-    ],
-    rating: 4.5,
-    reviews: 96,
-  },
-  {
     id: 'blz-06',
     slug: 'blaze-bucket-hat-green',
     name: 'Blaze Bucket Hat — Green',
