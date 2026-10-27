@@ -93,8 +93,10 @@ export const products: Product[] = [
     ],
     images: [
       { src: img('IMG-20261027-WA0056.jpg'), alt: 'Model shot from behind wearing the white Blaze back-print tee with mosque illustration' },
+      { src: img('IMG-20261027-WA0054.jpg'), alt: 'Model from behind in an oversized black Blaze tee with white floral back print and brand text' },
       { src: img('IMG-20261027-WA0049.jpg'), alt: 'Two models in Blaze tees on a trampoline, one black and one graphic white' },
       { src: img('IMG-20261027-WA0047.jpg'), alt: 'Model in a white oversized Blaze tee holding a football in front of a goal net' },
+      { src: img('IMG-20261027-WA0050.jpg'), alt: 'Model in a white Blaze graphic tee with a sneaker print, standing in a sunlit yard' },
     ],
     rating: 4.9,
     reviews: 264,

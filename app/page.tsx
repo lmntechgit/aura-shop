@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { products, editorial } from '@/lib/products';
 import { ProductCard } from '@/components/product-card';
+import { BrandFilm } from '@/components/brand-film';
 
 const steps = [
   {
@@ -131,24 +132,11 @@ export default function Home() {
         </div>
 
         <div className="rail-content mt-8 md:mt-0">
-          <figure className="border-2 border-ink bg-surface">
-            <video
-              className="h-full w-full grayscale"
-              poster="/images/blaze-film-poster.jpg"
-              controls
-              muted
-              loop
-              playsInline
-              preload="none"
-              aria-label="Blaze brand film: a model in a black Blaze tee in a red kitchen, with the Blaze Established 24 mark"
-            >
-              <source src="/images/blaze-film.mp4" type="video/mp4" />
-              Your browser does not support the video element.
-            </video>
-            <figcaption className="border-t-2 border-ink px-3 py-2 label text-[#6b6b6b]">
-              Brand film — Est. 24
-            </figcaption>
-          </figure>
+          <BrandFilm
+            poster="/images/blaze-film-poster.jpg"
+            src="/images/blaze-film.mp4"
+            label="Brand film — Est. 24"
+          />
 
           <div className="editorial-grid mt-6 grid grid-cols-3 gap-4 md:gap-6">
             {editorial.map((e) => (

@@ -69,7 +69,7 @@ export default async function ProductPage({
             />
           </figure>
 
-          <div className="mt-3 grid grid-cols-3 gap-3">
+          <div className="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-4">
             {product.images.slice(1).map((im) => (
               <figure key={im.src} className="aspect-square overflow-hidden border-2 border-ink bg-surface">
                 <Image
