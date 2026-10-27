@@ -126,30 +126,6 @@ export const products: Product[] = [
     reviews: 187,
   },
   {
-    id: 'blz-06',
-    slug: 'blaze-bucket-hat-green',
-    name: 'Blaze Bucket Hat — Green',
-    tagline: 'All-over B-mark, green',
-    price: 260,
-    colorway: 'Green',
-    colors: [{ name: 'Green', hex: '#2F5D3A' }],
-    sizes: ['S/M', 'L/XL'],
-    description:
-      'The green is the run we printed fewest of. Same twill, same strap, same mark in white — just a colour that does not sit next to anything else in the range.',
-    features: [
-      'All-over printed cotton twill',
-      'White mark on green twill',
-      'Shortest run of the three',
-      'Unlined, packable',
-    ],
-    images: [
-      { src: img('IMG-20261027-WA0053.jpg'), alt: 'Three Blaze bucket hats in black, white and green on a white background' },
-      { src: img('IMG-20261027-WA0045.jpg'), alt: 'Two models in Blaze apparel in a modern kitchen' },
-    ],
-    rating: 4.7,
-    reviews: 64,
-  },
-  {
     id: 'blz-07',
     slug: 'blaze-sneaker-graphic-tee',
     name: 'Blaze Sneaker Graphic Tee',
